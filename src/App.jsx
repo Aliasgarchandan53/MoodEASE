@@ -1,25 +1,28 @@
 import './App.css'
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import About from './components/About'
-import Services from './components/Services'
-
+import component from "../src/components/index.js"
 function App() {
 
   return (
     <>
-      <Navbar/>
+      <component.Navbar/>
       <main>
         <div id="home">
-          <Home/>
+          <component.Home/>
         </div>
         <div id="about">
-          <About/>
+          <component.About/>
         </div>
         <div id="services">
-          <Services/>
+          <component.Services/>
+        </div>
+        <div id="doctors">
+          <component.Doctors/>
+        </div>
+        <div id="blog">
+          <component.Blogs />
         </div>
       </main>
+      <component.Footer />
     </>
   )
 }
