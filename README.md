@@ -1,8 +1,9 @@
-# React + Vite
+# MoodEase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MoodEase is a dynamic web application designed to prioritize and enhance the mental health and well-being of users. With a user-centric approach, MoodEase offers a range of features aimed at fostering relaxation, self-reflection, and access to curated resources.
 
-Currently, two official plugins are available:
+Through the Relaxation feature, users can unwind with soft sounds and relaxation melodies, creating a serene environment conducive to stress relief and relaxation. The Journaling feature provides a private space for users to track their thoughts, emotions, and experiences, promoting self-awareness and personal growth.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Additionally, MoodEase includes a comprehensive Resources section featuring expert-curated articles, blogs, and videos covering various mental health topics, empowering users with valuable insights and support.
+
+MoodEase aims to create a supportive community environment where individuals can prioritize their mental well-being and find solace in shared experiences. Join us on the journey to better mental health with MoodEase.
