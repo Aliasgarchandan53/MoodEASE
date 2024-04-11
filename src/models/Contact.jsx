@@ -5,7 +5,7 @@ export default function Contact(closeForm) {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" >
       <div className="popup-form absolute mt-12 text-black" >
         <form className="w-80 md:w-96 space-y-5 bg-white p-5 rounded-xl">
-          <h1 className="text-4xl font-semibold text-center text-backgroundColor" >Book Now</h1>
+          <h1 className="text-4xl font-semibold text-center text-backgroundColor" >Login / SignUp</h1>
           <div className="flex flex-col" >
           <input
             type="text"
@@ -43,8 +43,9 @@ export default function Contact(closeForm) {
           />
           </div>
 
-        <div className="flex gap-5">
-          <Button title='Book Appointment'/>
+        <div className="flex flex-row  justify-center gap-2 ">
+          <Button title='Login'/>
+          <Button title='SignUp'/>
           <button className="bg-backgroundColor text-white px-10 rounded-md active:bg-red-500" onClick={closeForm}>
             Close
           </button>

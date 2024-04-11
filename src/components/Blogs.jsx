@@ -9,6 +9,9 @@ import img5 from "../assets/img/blog5.jpg";
 import img6 from "../assets/img/blog6.jpg";
 
 const Blogs = () => {
+  const text =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,repellendus suscipit. Rerum consequatur magni expedita.";
+
   return (
     <div className=" min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-24">
       <div className=" flex flex-col items-center lg:flex-row justify-between">
@@ -27,15 +30,32 @@ const Blogs = () => {
       </div>
       <div className=" my-8">
         <div className=" flex flex-wrap justify-center gap-5">
-          <BlogCard img={img1} headlines="Unraveling the Mysteries of Sleep" />
-          <BlogCard img={img2} headlines="The Heart-Healthy Diet" />
+          <BlogCard
+            img={img1}
+            headlines="Unraveling the Mysteries of Sleep"
+            description={text}
+          />
+          <BlogCard
+            img={img2}
+            headlines="The Heart-Healthy Diet"
+            description={text}
+          />
           <BlogCard
             img={img3}
             headlines="Understanding Pediatric Vaccinations"
+            description={text}
           />
-          <BlogCard img={img4} headlines="Navigating Mental Health" />
-          <BlogCard img={img5} headlines="The Importance of Regular Exercise" />
-          <BlogCard img={img6} headlines="Skin Health 101" />
+          <BlogCard
+            img={img4}
+            headlines="Navigating Mental Health"
+            description={text}
+          />
+          <BlogCard
+            img={img5}
+            headlines="The Importance of Regular Exercise"
+            description={text}
+          />
+          <BlogCard img={img6} headlines="Skin Health 101" description={text} />
         </div>
       </div>
     </div>

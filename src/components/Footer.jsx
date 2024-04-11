@@ -1,29 +1,30 @@
 import React from "react";
 import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <div className=" bg-backgroundColor text-white rounded-t-3xl mt-8 md:mt-0">
       <div className="flex flex-col md:flex-row justify-between p-8 md:px-32 px-5">
         <div className=" w-full md:w-1/4">
-          <h1 className=" font-semibold text-xl pb-4">WellnessVista</h1>
+          <h1 className=" font-semibold text-xl pb-4">MoodEase</h1>
           <p className=" text-sm">
-            Our team of dedicated doctors, each specializing in unique fields
-            such as orthopedics, cardiology, pediatrics, neurology, dermatology,
-            and more.
+            Elevate your mental well-being with MoodEase: A holistic platform
+            offering relaxation, journaling, and curated resources for personal
+            growth and support.
           </p>
         </div>
         <div>
-          <h1 className="font-medium text-xl pb-4 pt-5 md:pt-0">About Us</h1>
+          <h1 className="font-medium text-xl pb-4 pt-5 md:pt-0">Home</h1>
           <nav className="flex flex-col gap-2">
-            <Link
-              to="about"
+            <NavLink
+              to="/"
               spy={true}
               smooth={true}
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              About Us
-            </Link>
+              Home
+            </NavLink>
             <Link
               to="services"
               spy={true}
@@ -45,6 +46,29 @@ export default function Footer() {
           </nav>
         </div>
         <div>
+          <h1 className="font-medium text-xl pb-4 pt-5 md:pt-0">About Us</h1>
+          <nav className="flex flex-col gap-2">
+            <Link
+              to="about"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className=" hover:text-hoverColor transition-all cursor-pointer"
+            >
+              About Us
+            </Link>
+            <NavLink
+              to="/blog"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className=" hover:text-hoverColor transition-all cursor-pointer"
+            >
+              Blogs
+            </NavLink>
+          </nav>
+        </div>
+        <div>
           <h1 className="font-medium text-xl pb-4 pt-5 md:pt-0">Services</h1>
           <nav className="flex flex-col gap-2">
             <Link
@@ -54,7 +78,7 @@ export default function Footer() {
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Lab Test
+              Relaxation
             </Link>
             <Link
               to="services"
@@ -63,7 +87,7 @@ export default function Footer() {
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Health Check
+              Journalling
             </Link>
             <Link
               to="services"
@@ -72,7 +96,7 @@ export default function Footer() {
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Heart Health
+              Resources
             </Link>
           </nav>
         </div>
@@ -92,7 +116,7 @@ export default function Footer() {
         </div>
       </div>
       <div>
-        <p className="text-center py-4" >
+        <p className="text-center py-4">
           @Copyright developed by{" "}
           <span className="hover:text-hoverColor">Ali Asgar Chandan</span> | All
           rights reserved

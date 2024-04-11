@@ -1,28 +1,31 @@
 import React from "react";
-import img from "../assets/img/about.jpg";
+import img from "../assets/img/about.png";
 
 const About = () => {
   return (
     <div className=" min-h-screen flex flex-col lg:flex-row justify-between items-center lg:px-32 px-5 pt-24 lg:pt-16 gap-5">
       <div className=" w-full lg:w-3/4 space-y-4">
-        <h1 className=" text-4xl font-semibold text-center lg:text-start">About Us</h1>
+        <h1 className=" text-4xl font-semibold text-center lg:text-start">
+          About Us
+        </h1>
         <p className=" text-justify lg:text-start">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-          labore rerum tempore tenetur commodi natus quos itaque voluptatum
-          repudiandae nostrum accusantium vero voluptate aspernatur totam,
-          laboriosam aut, et quae consequatur?
+          At MoodEase, we believe in empowering individuals to take control of
+          their mental well-being. Our platform offers a diverse range of
+          resources and tools tailored to support your journey towards greater
+          emotional resilience and clarity.
         </p>
         <p className="text-justify lg:text-start">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora quia
-          suscipit illum, numquam incidunt nostrum dolor officia doloremque
-          cupiditate, placeat explicabo sed iure atque neque quidem ipsam!
-          Dolor, minus reiciendis.
+          Dive into our curated collection of articles, videos, and relaxation
+          techniques designed to nurture your mind and spirit. Whether you're
+          seeking inspiration, guidance, or simply a moment of tranquility,
+          MoodEase provides the resources you need to thrive.
         </p>
         <p className="text-justify lg:text-start">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, illum.
-          Accusantium ab expedita veniam nobis aut, in rerum repellendus!
-          Exercitationem libero recusandae corrupti accusantium reiciendis in
-          placeat illo maxime ea.
+          Join our community of like-minded individuals committed to
+          prioritizing mental health. At MoodEase, we foster a supportive and
+          inclusive environment where you can share experiences, find solace,
+          and discover new strategies for managing life's challenges with grace
+          and resilience.
         </p>
       </div>
       <div className=" w-full lg:w-3/4">

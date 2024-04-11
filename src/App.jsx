@@ -1,29 +1,29 @@
-import './App.css'
-import component from "../src/components/index.js"
+import React from 'react';
+import Homepage from './pages/Homepage.jsx'
+import Blogpage from './pages/Blogpage.jsx'
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Pagelayout from "./Pagelayout.jsx"
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Pagelayout />} >
+      <Route path="" element={<Homepage/>}/>
+      <Route path="blog" element={<Blogpage/>}/>
+    </Route>
+  )
+)
+
+
+
 function App() {
 
   return (
-    <>
-      <component.Navbar/>
-      <main>
-        <div id="home">
-          <component.Home/>
-        </div>
-        <div id="about">
-          <component.About/>
-        </div>
-        <div id="services">
-          <component.Services/>
-        </div>
-        <div id="doctors">
-          <component.Doctors/>
-        </div>
-        <div id="blog">
-          <component.Blogs />
-        </div>
-      </main>
-      <component.Footer />
-    </>
+    <RouterProvider router={router} />
   )
 }
 

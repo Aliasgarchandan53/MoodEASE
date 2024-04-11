@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-scroll";
+import { Link} from "react-scroll";
+import {NavLink} from "react-router-dom";
 import Button from "../layouts/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Contact from "../models/Contact";
@@ -36,15 +37,15 @@ const Navbar = () => {
           </div>
 
           <nav className=" hidden lg:flex flex-row items-center text-lg font-medium gap-8">
-            <Link
-              to="home"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
+          <NavLink
+            to="/"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Home
-            </Link>
+            Home
+            </NavLink>
             <Link
               to="about"
               spy={true}
@@ -72,15 +73,24 @@ const Navbar = () => {
             >
               Doctors
             </Link>
-            <Link
+            {/* <Link
               to="blog"
               spy={true}
               smooth={true}
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Blog
-            </Link>
+              Blogs
+            </Link> */}
+            <NavLink
+            to="/blog"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className=" hover:text-hoverColor transition-all cursor-pointer"
+            >
+            Blogs
+            </NavLink>
           </nav>
 
           <div className=" hidden lg:flex">
@@ -155,7 +165,7 @@ const Navbar = () => {
             className=" hover:text-hoverColor transition-all cursor-pointer"
             onClick={closeMenu}
           >
-            Blog
+            Blogs
           </Link>
 
           <div className=" lg:hidden">
