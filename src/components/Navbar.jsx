@@ -39,9 +39,6 @@ const Navbar = () => {
           <nav className=" hidden lg:flex flex-row items-center text-lg font-medium gap-8">
           <NavLink
             to="/"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
             >
             Home
@@ -75,9 +72,6 @@ const Navbar = () => {
             </Link>
             <NavLink
             to="/blog"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
             >
             Blogs
@@ -110,9 +104,6 @@ const Navbar = () => {
         >
           <NavLink
             to="/"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
             >
             Home
@@ -149,9 +140,6 @@ const Navbar = () => {
           </Link>
           <NavLink
             to="/blog"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
             >
             Blogs

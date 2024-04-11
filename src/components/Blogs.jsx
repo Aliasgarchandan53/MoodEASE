@@ -1,13 +1,7 @@
 import React from "react";
 import Button from "../layouts/Button";
 import BlogCard from "../layouts/BlogCard";
-import img1 from "../assets/img/blog1.jpg";
-import img2 from "../assets/img/blog2.jpg";
-import img3 from "../assets/img/blog3.jpg";
-import img4 from "../assets/img/blog4.jpg";
-import img5 from "../assets/img/blog5.jpg";
-import img6 from "../assets/img/blog6.jpg";
-
+import img from "../assets/img/index"
 const Blogs = () => {
   const text =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,repellendus suscipit. Rerum consequatur magni expedita.";
@@ -31,31 +25,31 @@ const Blogs = () => {
       <div className=" my-8">
         <div className=" flex flex-wrap justify-center gap-5">
           <BlogCard
-            img={img1}
+            img={img.img1}
             headlines="Unraveling the Mysteries of Sleep"
             description={text}
           />
           <BlogCard
-            img={img2}
+            img={img.img2}
             headlines="The Heart-Healthy Diet"
             description={text}
           />
           <BlogCard
-            img={img3}
+            img={img.img3}
             headlines="Understanding Pediatric Vaccinations"
             description={text}
           />
           <BlogCard
-            img={img4}
+            img={img.img4}
             headlines="Navigating Mental Health"
             description={text}
           />
           <BlogCard
-            img={img5}
+            img={img.img5}
             headlines="The Importance of Regular Exercise"
             description={text}
           />
-          <BlogCard img={img6} headlines="Skin Health 101" description={text} />
+          <BlogCard img={img.img6} headlines="Skin Health 101" description={text} />
         </div>
       </div>
     </div>
