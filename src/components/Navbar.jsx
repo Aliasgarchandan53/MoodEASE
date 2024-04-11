@@ -73,15 +73,6 @@ const Navbar = () => {
             >
               Doctors
             </Link>
-            {/* <Link
-              to="blog"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Blogs
-            </Link> */}
             <NavLink
             to="/blog"
             spy={true}
@@ -117,16 +108,15 @@ const Navbar = () => {
             menu ? "translate-x-0" : "-translate-x-full"
           } lg:hidden flex flex-col absolute bg-backgroundColor text-white left-0 top-16 font-semibold text-2xl text-center pt-8 pb-4 gap-8 w-full h-fit transition-transform duration-300`}
         >
-          <Link
-            to="home"
+          <NavLink
+            to="/"
             spy={true}
             smooth={true}
             duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
-            onClick={closeMenu}
-          >
+            >
             Home
-          </Link>
+            </NavLink>
           <Link
             to="about"
             spy={true}
@@ -157,16 +147,15 @@ const Navbar = () => {
           >
             Doctors
           </Link>
-          <Link
-            to="blog"
+          <NavLink
+            to="/blog"
             spy={true}
             smooth={true}
             duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
-            onClick={closeMenu}
-          >
+            >
             Blogs
-          </Link>
+            </NavLink>
 
           <div className=" lg:hidden">
             <button
