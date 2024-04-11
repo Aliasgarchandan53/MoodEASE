@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-export default function Contact(closeForm) {
+export default function Contact({closeForm}) {
   const initialValues = {
     userFirstName: "",
     userLastName: "",
@@ -20,10 +20,9 @@ export default function Contact(closeForm) {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
       setFormValues(initialValues);
-      // closeForm();
     }
   }, [formErrors]);
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues({ ...formValues, [name]: value });
@@ -142,6 +141,7 @@ export default function Contact(closeForm) {
               </button>
             </div>
             <button
+            type="button"
               className="bg-backgroundColor text-white px-10 rounded-md active:bg-red-500"
               onClick={closeForm}
               id="close"

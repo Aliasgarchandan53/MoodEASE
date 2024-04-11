@@ -24,9 +24,9 @@ const Blogs = () => {
             quidem.
           </p>
         </div>
-        <div className=" mt-4 lg:mt-0">
+        {/* <div className=" mt-4 lg:mt-0">
           <Button title="Our Articles" />
-        </div>
+        </div> */}
       </div>
       <div className=" my-8">
         <div className=" flex flex-wrap justify-center gap-5">
