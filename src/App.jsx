@@ -8,12 +8,14 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import Pagelayout from "./Pagelayout.jsx"
+import Dashboard from './pages/Dashboard.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Pagelayout />} >
       <Route path="" element={<Homepage/>}/>
       <Route path="blog" element={<Blogpage/>}/>
+      <Route path="dashboard" element={<Dashboard/>} />
     </Route>
   )
 )

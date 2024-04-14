@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Contact({closeForm}) {
   const initialValues = {
     userFirstName: "",
@@ -9,6 +10,7 @@ export default function Contact({closeForm}) {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const navigate = useNavigate();
 
   //regular expressions :
   const emailReg = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
@@ -19,7 +21,9 @@ export default function Contact({closeForm}) {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
-      setFormValues(initialValues);
+      setFormValues(initialValues);    
+      navigate("/dashboard");
+      closeForm();
     }
   }, [formErrors]);
 
@@ -33,6 +37,8 @@ export default function Contact({closeForm}) {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
+
+
 
   const validate = (values) => {
     let errors = {};
@@ -62,11 +68,11 @@ export default function Contact({closeForm}) {
             Login / SignUp
           </h1>
           <div className="flex flex-col">
-            <p className="text-sm text-center text-backgroundColor mb-2">
+            {/* <p className="text-sm text-center text-backgroundColor mb-2">
               {Object.keys(formErrors).length === 0 && isSubmit
                 ? "Your account has successfully been logged in ."
                 : ""}
-            </p>
+            </p> */}
             <input
               type="text"
               name="userFirstName"
