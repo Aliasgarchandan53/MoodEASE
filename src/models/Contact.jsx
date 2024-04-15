@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Contact({closeForm}) {
+import UserContext from "../contexts/UserContext";
+
+export default function Contact({ closeForm }) {
   const initialValues = {
     userFirstName: "",
     userLastName: "",
@@ -11,6 +13,7 @@ export default function Contact({closeForm}) {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
   //regular expressions :
   const emailReg = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
@@ -21,7 +24,8 @@ export default function Contact({closeForm}) {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
-      setFormValues(initialValues);    
+      setFormValues(initialValues);
+      setUser({login:true,...formValues});
       navigate("/dashboard");
       closeForm();
     }
@@ -37,8 +41,6 @@ export default function Contact({closeForm}) {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
-
-
 
   const validate = (values) => {
     let errors = {};
@@ -147,7 +149,7 @@ export default function Contact({closeForm}) {
               </button>
             </div>
             <button
-            type="button"
+              type="button"
               className="bg-backgroundColor text-white px-10 rounded-md active:bg-red-500"
               onClick={closeForm}
               id="close"
