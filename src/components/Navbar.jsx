@@ -1,6 +1,6 @@
-import React, { useState ,useContext} from "react";
+import React, { useState ,useContext, useEffect} from "react";
 import { Link} from "react-scroll";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Button from "../layouts/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Contact from "../models/Contact";
@@ -9,7 +9,9 @@ import UserContext from "../contexts/UserContext";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const { user } = useContext(UserContext);
+  const { user , setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = () => {
     setMenu(!menu);
@@ -27,6 +29,22 @@ const Navbar = () => {
   const closeForm = () => {
     setShowForm(false);
   };
+
+  const logout=()=>{
+    console.log(location.pathname);
+    let newuser={login:false,
+    userFirstName: "<error :Not yet login-ed>",
+    userLastName: "",
+    userEmail: "",
+    userPassword: ""};
+    setUser(newuser);   
+  }
+
+  useEffect(()=>{
+    if(!user.login && (location.pathname==="/dashboard")){
+      navigate("/");
+    }
+  },[user,location])
 
   return (
     <div className=" fixed w-full z-10 text-white">
@@ -78,15 +96,39 @@ const Navbar = () => {
             >
             Blogs
             </NavLink>
+            {
+              user.login?<NavLink
+              to="/dashboard"
+              className=" hover:text-hoverColor transition-all cursor-pointer"
+              >
+              Dashboard
+              </NavLink>
+              :""
+            }
           </nav>
 
           <div className=" hidden lg:flex">
-            <button
+            {/* <button
               className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
               onClick={openForm}
             >
              {user.login?"Log Out":"Login/SignUp"}
+            </button> */}
+            {
+              !user.login?<button
+              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
+              onClick={openForm}
+            >
+            Login/SignUp
             </button>
+            :
+            <button
+              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
+              onClick={logout}
+            >
+            Logout
+            </button>
+            }
           </div>
 
           {showForm && <Contact closeForm={closeForm} />}

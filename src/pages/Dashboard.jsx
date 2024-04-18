@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 
 export default function Dashboard() {
-  const { user } = useContext(UserContext);
+  const { user} = useContext(UserContext);
 
   return (
     <div className=" min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-24">
