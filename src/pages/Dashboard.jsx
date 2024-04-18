@@ -1,17 +1,3 @@
-//
-//
-
-// export default function Dashboard() {
-//
-
-//   return (
-//     <div className=" min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-24">
-//       <div className=" flex flex-col items-center lg:flex-row justify-center ">
-//
-//       </div>
-//     </div>
-//   );
-// }
 import React, { useContext } from "react";
 import Button from "../layouts/Button";
 import UserContext from "../contexts/UserContext";

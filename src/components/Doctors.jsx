@@ -9,36 +9,42 @@ const Doctors = () => {
   const data = [
     {
       img: "/src/assets/img/doc1.jpg",
-      name: "Dr. Serena Mitchell",
-      specialties: "Orthopedic Surgeon",
+      name: "Dr. William Smith",
+      specialties: "Clinical Psychologist",
+      gender: "Male"
     },
     {
       img: "/src/assets/img/doc2.jpg",
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
+      name: "Dr. Emily Johnson",
+      specialties: "Psychiatrist",
+      gender: "Female"
     },
     {
       img: "/src/assets/img/doc3.jpg",
-      name: "Dr. Camila Rodriguez",
-      specialties: "Pediatrician",
+      name: "Dr. Michael Brown",
+      specialties: "Child and Adolescent Therapist",
+      gender: "Male"
     },
     {
       img: "/src/assets/img/doc4.jpg",
-      name: "Dr. Victor Nguyen",
-      specialties: "Neurologist",
+      name: "Dr. Olivia Davis",
+      specialties: "Cognitive-Behavioral Therapist",
+      gender: "Female"
     },
     {
       img: "/src/assets/img/doc5.jpg",
-      name: "Dr. Ethan Carter",
-      specialties: "Dermatologist",
+      name: "Dr. James Taylor",
+      specialties: "Marriage and Family Counselor",
+      gender: "Male"
     },
     {
       img: "/src/assets/img/doc6.jpg",
-      name: "Dr. Olivia Martinez",
-      specialties: "Ophthalmologist",
+      name: "Dr. Christopher Martinez",
+      specialties: "Grief and Trauma Therapist",
+      gender: "Male"
     },
   ];
-
+  
   const slider = useRef(null);
 
   const settings = {
@@ -83,11 +89,11 @@ const Doctors = () => {
       <div className=" flex flex-col items-center lg:flex-row justify-between mb-10 lg:mb-0">
         <div>
           <h1 className=" text-4xl font-semibold text-center lg:text-start">
-            Our Doctors
+            Our Mental Health Specialists
           </h1>
           <p className=" mt-2 text-center lg:text-start">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-            quidem.
+            Explore our diverse team of expert mental health professionals
+            specializing in various areas to meet your unique needs.
           </p>
         </div>
         <div className="flex gap-5 mt-4 lg:mt-0">
@@ -109,22 +115,22 @@ const Doctors = () => {
         <Slider ref={slider} {...settings}>
           {data.map((e, index) => (
             <div
-            className="h-[350px] text-black rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] mb-2 cursor-pointer"
-            key={index}
-          >
-            <div>
-              <img
-                src={e.img}
-                alt="img"
-                className=" h-56 rounded-t-xl w-full"
-              />
-            </div>
+              className="h-[350px] text-black rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] mb-2 cursor-pointer"
+              key={index}
+            >
+              <div>
+                <img
+                  src={e.img}
+                  alt="img"
+                  className=" h-56 rounded-t-xl w-full"
+                />
+              </div>
 
-            <div className=" flex flex-col justify-center items-center">
-              <h1 className=" font-semibold text-xl pt-4">{e.name}</h1>
-              <h3 className=" pt-2">{e.specialties}</h3>
+              <div className=" flex flex-col justify-center items-center">
+                <h1 className=" font-semibold text-xl pt-4">{e.name}</h1>
+                <h3 className=" pt-2">{e.specialties}</h3>
+              </div>
             </div>
-          </div>
           ))}
         </Slider>
       </div>
