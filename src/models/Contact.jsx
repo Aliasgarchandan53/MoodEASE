@@ -47,9 +47,9 @@ export default function Contact({ closeForm }) {
     if (!values.userFirstName) errors.userFirstName = "First name is empty.";
     else if (!nameReg.test(values.userFirstName))
       errors.userFirstName = "First name should start with capital letter.";
-    if (!values.userLastName) errors.userLastName = "Last name is empty.";
-    else if (!nameReg.test(values.userLastName))
-      errors.userLastName = "Last name should start with capital letter.";
+    // if (!values.userLastName) errors.userLastName = "Last name is empty.";
+    // else if (!nameReg.test(values.userLastName))
+    //   errors.userLastName = "Last name should start with capital letter.";
     if (!values.userEmail) errors.userEmail = "Email is empty.";
     else if (!emailReg.test(values.userEmail))
       errors.userEmail = "Email format is invalid.";
@@ -67,7 +67,7 @@ export default function Contact({ closeForm }) {
           onSubmit={handleSubmit}
         >
           <h1 className="text-4xl font-semibold text-center text-backgroundColor">
-            Login / SignUp
+            Login
           </h1>
           <div className="flex flex-col">
             {/* <p className="text-sm text-center text-backgroundColor mb-2">
@@ -79,7 +79,7 @@ export default function Contact({ closeForm }) {
               type="text"
               name="userFirstName"
               id="userFirstName"
-              placeholder="First Name"
+              placeholder="Username"
               className="py-3 px-2 bg-[#d5f2ec] rounded-lg"
               value={formValues.userFirstName}
               onChange={handleChange}
@@ -88,7 +88,7 @@ export default function Contact({ closeForm }) {
               {formErrors.userFirstName}
             </p>
           </div>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <input
               type="text"
               name="userLastName"
@@ -101,7 +101,7 @@ export default function Contact({ closeForm }) {
             <p className="mt-2 text-red-600 text-sm text-center">
               {formErrors.userLastName}
             </p>
-          </div>
+          </div> */}
           <div className="flex flex-col">
             <input
               type="text"
@@ -132,25 +132,15 @@ export default function Contact({ closeForm }) {
           </div>
 
           <div className="flex flex-row  justify-center gap-2 ">
-            <div>
-              <button
+            <button
                 type="submit"
-                className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out "
+                className="bg-brightColor text-white px-8 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out "
               >
                 Login
               </button>
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out "
-              >
-                SignUp
-              </button>
-            </div>
             <button
               type="button"
-              className="bg-backgroundColor text-white px-10 rounded-md active:bg-red-500"
+              className="bg-backgroundColor text-white px-8 rounded-md active:bg-red-500"
               onClick={closeForm}
               id="close"
             >

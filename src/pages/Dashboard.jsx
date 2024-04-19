@@ -41,7 +41,9 @@ const Dashboard = () => {
       id: 1,
       type: "video",
       title: "Mindfulness Meditation for Beginners",
-      thumbnail: "https://plus.unsplash.com/premium_photo-1666299537516-bef50f6bf5ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWluZGZ1bGxuZXNzJTIwbWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      thumbnail:
+        "https://plus.unsplash.com/premium_photo-1666299537516-bef50f6bf5ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWluZGZ1bGxuZXNzJTIwbWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      link: "https://www.youtube.com/watch?v=ZToicYcHIOU",
     },
     {
       id: 2,
@@ -49,18 +51,23 @@ const Dashboard = () => {
       title: "Healthy Sleep Habits: Tips for Better Rest",
       thumbnail:
         "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVhbHRoeSUyMHNsZWVwJTIwaGFiaXRzfGVufDB8fDB8fHww",
+      link: "https://www.sleepfoundation.org/sleep-hygiene/healthy-sleep-tips",
     },
     {
       id: 3,
       type: "video",
       title: "Yoga for Stress Relief",
-      thumbnail: "https://media.istockphoto.com/id/1303002202/photo/my-presence-is-my-power.webp?b=1&s=170667a&w=0&k=20&c=xIjDs0LayICA4npXCHXF-aNVI1PWPDyhISCPxERgUyA=",
+      thumbnail:
+        "https://media.istockphoto.com/id/1303002202/photo/my-presence-is-my-power.webp?b=1&s=170667a&w=0&k=20&c=xIjDs0LayICA4npXCHXF-aNVI1PWPDyhISCPxERgUyA=",
+      link: "https://www.healthline.com/health/fitness/yoga-for-stress",
     },
     {
       id: 4,
       type: "article",
       title: "Nutrition Tips for Mental Health",
-      thumbnail: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bnV0cml0aW9ufGVufDB8fDB8fHww",
+      thumbnail:
+        "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bnV0cml0aW9ufGVufDB8fDB8fHww",
+      link: "https://www.health.harvard.edu/blog/nutritional-psychiatry-your-brain-on-food-201511168626",
     },
   ];
 
@@ -118,6 +125,7 @@ const Dashboard = () => {
               type={resource.type}
               title={resource.title}
               thumbnail={resource.thumbnail}
+              link={resource.link}
             />
           ))}
         </div>

@@ -45,6 +45,10 @@ const Navbar = () => {
       navigate("/");
     }
   },[user,location])
+  const redirectTo=()=>{
+    if(location.pathname!=="/")
+      navigate("/")
+  }
 
   return (
     <div className=" fixed w-full z-10 text-white">
@@ -63,33 +67,24 @@ const Navbar = () => {
             >
             Home
             </NavLink>
-            <Link
-              to="about"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
+            <NavLink
+            to="about"
+            className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              About Us
-            </Link>
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
+            About Us
+            </NavLink>
+            <NavLink
+            to="services"
+            className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Services
-            </Link>
-            <Link
-              to="doctors"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
+            Services
+            </NavLink>
+            <NavLink
+            to="doctors"
+            className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Doctors
-            </Link>
+            Doctors
+            </NavLink>
             <NavLink
             to="/blog"
             className=" hover:text-hoverColor transition-all cursor-pointer"
@@ -116,10 +111,10 @@ const Navbar = () => {
             </button> */}
             {
               !user.login?<button
-              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
+              className="bg-brightColor text-white px-6 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
               onClick={openForm}
             >
-            Login/SignUp
+            Login
             </button>
             :
             <button
