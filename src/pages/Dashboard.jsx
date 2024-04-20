@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import Button from "../layouts/Button";
-import UserContext from "../contexts/UserContext";
 import { FaMusic, FaHeadphonesAlt, FaVideo, FaBookOpen } from "react-icons/fa";
 import { SongCard, ResourceCard, JournalEntryCard } from "../layouts/index";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Dashboard = () => {
-  const { user } = useContext(UserContext);
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   const journalEntries = [
     {
@@ -76,7 +75,7 @@ const Dashboard = () => {
       <div className="flex flex-col items-center lg:flex-row justify-between">
         <div>
           <h1 className="text-4xl font-semibold text-center lg:text-start">
-            Hello {user.userFirstName} !!
+            Hello {user.name} !!
           </h1>
           <p className="mt-2 text-center lg:text-start">
             Here's your personal dashboard...

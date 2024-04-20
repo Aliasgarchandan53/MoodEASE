@@ -4,14 +4,15 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Button from "../layouts/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Contact from "../models/Contact";
-import UserContext from "../contexts/UserContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const { user , setUser } = useContext(UserContext);
+  // const { user , setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
 
   const handleChange = () => {
     setMenu(!menu);
@@ -29,27 +30,7 @@ const Navbar = () => {
   const closeForm = () => {
     setShowForm(false);
   };
-
-  const logout=()=>{
-    console.log(location.pathname);
-    let newuser={login:false,
-    userFirstName: "<error :Not yet login-ed>",
-    userLastName: "",
-    userEmail: "",
-    userPassword: ""};
-    setUser(newuser);   
-  }
-
-  useEffect(()=>{
-    if(!user.login && (location.pathname==="/dashboard")){
-      navigate("/");
-    }
-  },[user,location])
-  const redirectTo=()=>{
-    if(location.pathname!=="/")
-      navigate("/")
-  }
-
+  
   return (
     <div className=" fixed w-full z-10 text-white">
       <div>
@@ -92,7 +73,7 @@ const Navbar = () => {
             Blogs
             </NavLink>
             {
-              user.login?<NavLink
+              isAuthenticated?<NavLink
               to="/dashboard"
               className=" hover:text-hoverColor transition-all cursor-pointer"
               >
@@ -103,27 +84,12 @@ const Navbar = () => {
           </nav>
 
           <div className=" hidden lg:flex">
-            {/* <button
-              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
-              onClick={openForm}
-            >
-             {user.login?"Log Out":"Login/SignUp"}
-            </button> */}
             {
-              !user.login?<button
-              className="bg-brightColor text-white px-6 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
-              onClick={openForm}
-            >
-            Login
-            </button>
-            :
-            <button
-              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
-              onClick={logout}
-            >
-            Logout
-            </button>
+              !isAuthenticated?
+              <Button title="Login" onClick={() => loginWithRedirect()}/>
+              :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
             }
+            
           </div>
 
           {showForm && <Contact closeForm={closeForm} />}
@@ -185,12 +151,11 @@ const Navbar = () => {
             </NavLink>
 
           <div className=" lg:hidden">
-            <button
-              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
-              onClick={openForm}
-            >
-              {user.login?"Log Out":"Login/SignUp"}
-            </button>
+            {
+              isAuthenticated?
+              <Button title="Login" onClick={() => loginWithRedirect()}/>
+              :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
+            }
           </div>
         </div>
       </div>
@@ -199,3 +164,53 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+/*
+          <div className=" lg:hidden">
+          { {
+              !user.login?<button
+              className="bg-brightColor text-white px-6 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
+              onClick={openForm}
+            >
+            Login
+            </button>
+            :
+            <button
+              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
+              onClick={logoutFunc}
+            >
+            Logout
+            </button>
+            } }
+            {
+              isAuthenticated?
+              <Button title="Login" onClick={() => loginWithRedirect()}/>
+              :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
+            }
+          </div>
+ */
+
+/*Form code :
+
+  const logoutFunc=()=>{
+    console.log(location.pathname);
+    let newuser={login:false,
+    userFirstName: "<error :Not yet login-ed>",
+    userLastName: "",
+    userEmail: "",
+    userPassword: ""};
+    setUser(newuser);   
+  }
+
+  useEffect(()=>{
+    if(!user.login && (location.pathname==="/dashboard")){
+      navigate("/");
+    }
+  },[user,location])
+  const redirectTo=()=>{
+    if(location.pathname!=="/")
+      navigate("/")
+  }
+
+
+*/
