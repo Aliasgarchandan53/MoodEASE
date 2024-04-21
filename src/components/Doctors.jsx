@@ -8,37 +8,37 @@ import { FaArrowRight } from "react-icons/fa";
 const Doctors = () => {
   const data = [
     {
-      img: "../src/assets/img/doc1.jpg",
+      img: "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=1200:*",
       name: "Dr. William Smith",
       specialties: "Clinical Psychologist",
       gender: "Male"
     },
     {
-      img: "../src/assets/img/doc2.jpg",
+      img: "https://wp02-media.cdn.ihealthspot.com/wp-content/uploads/sites/494/2020/08/iStock-986678504-1024x683.jpg",
       name: "Dr. Emily Johnson",
       specialties: "Psychiatrist",
       gender: "Female"
     },
     {
-      img: "../src/assets/img/doc3.jpg",
+      img: "https://futurepsychsolutions.com/wp-content/uploads/male-treatment6.jpg",
       name: "Dr. Michael Brown",
       specialties: "Child and Adolescent Therapist",
       gender: "Male"
     },
     {
-      img: "../src/assets/img/doc4.jpg",
+      img: "https://s3-eu-west-1.amazonaws.com/intercare-web-public/wysiwyg-uploads%2F1580196666465-doctor.jpg",
       name: "Dr. Olivia Davis",
       specialties: "Cognitive-Behavioral Therapist",
       gender: "Female"
     },
     {
-      img: "../src/assets/img/doc5.jpg",
+      img: "https://cdn.punchng.com/wp-content/uploads/2023/09/20144750/Umoh-Michael-e1695217670244.jpeg",
       name: "Dr. James Taylor",
       specialties: "Marriage and Family Counselor",
       gender: "Male"
     },
     {
-      img: "../src/assets/img/doc6.jpg",
+      img: "https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg",
       name: "Dr. Christopher Martinez",
       specialties: "Grief and Trauma Therapist",
       gender: "Male"
