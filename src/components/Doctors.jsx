@@ -8,37 +8,37 @@ import { FaArrowRight } from "react-icons/fa";
 const Doctors = () => {
   const data = [
     {
-      img: "/src/assets/img/doc1.jpg",
+      img: "../src/assets/img/doc1.jpg",
       name: "Dr. William Smith",
       specialties: "Clinical Psychologist",
       gender: "Male"
     },
     {
-      img: "/src/assets/img/doc2.jpg",
+      img: "../src/assets/img/doc2.jpg",
       name: "Dr. Emily Johnson",
       specialties: "Psychiatrist",
       gender: "Female"
     },
     {
-      img: "/src/assets/img/doc3.jpg",
+      img: "../src/assets/img/doc3.jpg",
       name: "Dr. Michael Brown",
       specialties: "Child and Adolescent Therapist",
       gender: "Male"
     },
     {
-      img: "/src/assets/img/doc4.jpg",
+      img: "../src/assets/img/doc4.jpg",
       name: "Dr. Olivia Davis",
       specialties: "Cognitive-Behavioral Therapist",
       gender: "Female"
     },
     {
-      img: "/src/assets/img/doc5.jpg",
+      img: "../src/assets/img/doc5.jpg",
       name: "Dr. James Taylor",
       specialties: "Marriage and Family Counselor",
       gender: "Male"
     },
     {
-      img: "/src/assets/img/doc6.jpg",
+      img: "../src/assets/img/doc6.jpg",
       name: "Dr. Christopher Martinez",
       specialties: "Grief and Trauma Therapist",
       gender: "Male"
