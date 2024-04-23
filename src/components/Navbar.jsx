@@ -149,10 +149,18 @@ const Navbar = () => {
             >
             Blogs
             </NavLink>
-
-          <div className=" lg:hidden">
             {
-              isAuthenticated?
+              isAuthenticated?<NavLink
+              to="/dashboard"
+              className=" hover:text-hoverColor transition-all cursor-pointer"
+              >
+              Dashboard
+              </NavLink>
+              :""
+            }
+          <div className=" lg:hidden">
+          {
+              !isAuthenticated?
               <Button title="Login" onClick={() => loginWithRedirect()}/>
               :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
             }

@@ -1,10 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext ,useState} from "react";
 import { FaMusic, FaHeadphonesAlt, FaVideo, FaBookOpen } from "react-icons/fa";
-import { SongCard, ResourceCard, JournalEntryCard } from "../layouts/index";
+import {
+  SongCard,
+  ResourceCard,
+  JournalEntryCard,
+  Button,
+} from "../layouts/index";
 import { useAuth0 } from "@auth0/auth0-react";
+import Entryform from "../models/Entryform";
+import { useSelector, useDispatch } from 'react-redux'
 
 const Dashboard = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const [showForm, setShowForm] = useState(false);
+  const openForm = () => {
+    setShowForm(true);
+  };
+
+  const closeForm = () => {
+    setShowForm(false);
+  };
+
+  const newEntries = useSelector(state=>state.entries)
 
   const journalEntries = [
     {
@@ -93,6 +110,20 @@ const Dashboard = () => {
               entry={entry.entry}
             />
           ))}
+          {
+            entries.map()//dunno when to call this
+          }
+          <div className="flex flex-row">
+          <p className="mt-2 text-center lg:text-start">
+            Click to add entries --{">"}
+          </p>
+          <button
+              className="bg-brightColor text-white px-4 py-2 mx-4 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out "   
+            onClick={openForm}>
+              Add Entries
+            </button>
+          </div>
+          {showForm && <Entryform closeForm={closeForm} />}
         </div>
       </div>
 
