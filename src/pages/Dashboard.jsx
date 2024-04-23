@@ -92,7 +92,7 @@ const Dashboard = () => {
       <div className="flex flex-col items-center lg:flex-row justify-between">
         <div>
           <h1 className="text-4xl font-semibold text-center lg:text-start">
-            Hello {user.name} !!
+            {/* Hello {user.name} !! */}
           </h1>
           <p className="mt-2 text-center lg:text-start">
             Here's your personal dashboard...
@@ -111,7 +111,7 @@ const Dashboard = () => {
             />
           ))}
           {
-            entries.map()//dunno when to call this
+            // newEntries.map()
           }
           <div className="flex flex-row">
           <p className="mt-2 text-center lg:text-start">
