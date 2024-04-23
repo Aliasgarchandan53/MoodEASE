@@ -1,4 +1,4 @@
-import React, { useContext ,useState} from "react";
+import React, { useEffect,useState} from "react";
 import { FaMusic, FaHeadphonesAlt, FaVideo, FaBookOpen } from "react-icons/fa";
 import {
   SongCard,
@@ -13,6 +13,8 @@ import { useSelector, useDispatch } from 'react-redux'
 const Dashboard = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [showForm, setShowForm] = useState(false);
+  const [entries, setEntries] = useState([]);
+
   const openForm = () => {
     setShowForm(true);
   };
@@ -21,8 +23,12 @@ const Dashboard = () => {
     setShowForm(false);
   };
 
-  const newEntries = useSelector(state=>state.entries)
+  const jEntries = useSelector(state=>state.entries)
 
+  useEffect(() => {
+    setEntries(jEntries);
+  }, [jEntries]);
+  
   const journalEntries = [
     {
       id: 1,
@@ -91,9 +97,12 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-24 bg-[#F0F8FF] text-[#21603d]">
       <div className="flex flex-col items-center lg:flex-row justify-between">
         <div>
-          <h1 className="text-4xl font-semibold text-center lg:text-start">
-            {/* Hello {user.name} !! */}
-          </h1>
+          {
+            isAuthenticated?
+            <h1 className="text-4xl font-semibold text-center lg:text-start">
+            Hello {user.name} !!
+          </h1>:''
+          }
           <p className="mt-2 text-center lg:text-start">
             Here's your personal dashboard...
           </p>
@@ -102,7 +111,7 @@ const Dashboard = () => {
 
       <div className="my-8">
         <h2 className="text-2xl font-semibold mb-4">Last 3 Journal Entries</h2>
-        <div className="flex flex-col gap-4">
+        <div className=" flex flex-col gap-4" id="entrybox">
           {journalEntries.map((entry) => (
             <JournalEntryCard
               key={entry.id}
@@ -110,9 +119,13 @@ const Dashboard = () => {
               entry={entry.entry}
             />
           ))}
-          {
-            // newEntries.map()
-          }
+          {entries.map((entry) => (
+            <JournalEntryCard
+              key={entry.id}
+              date={entry.date}
+              entry={entry.entry}
+            />
+          ))}
           <div className="flex flex-row">
           <p className="mt-2 text-center lg:text-start">
             Click to add entries --{">"}
