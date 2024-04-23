@@ -9,11 +9,13 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import Entryform from "../models/Entryform";
 import { useSelector, useDispatch } from 'react-redux'
+import { deleteEntry } from "../features/journalEntry/journalEntrySlice";
 
 const Dashboard = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [showForm, setShowForm] = useState(false);
   const [entries, setEntries] = useState([]);
+  const dispatch=useDispatch()
 
   const openForm = () => {
     setShowForm(true);
@@ -28,27 +30,6 @@ const Dashboard = () => {
   useEffect(() => {
     setEntries(jEntries);
   }, [jEntries]);
-  
-  const journalEntries = [
-    {
-      id: 1,
-      date: "April 15, 2024",
-      entry:
-        "Today was a bit challenging, but I tried to stay positive and practice mindfulness...",
-    },
-    {
-      id: 2,
-      date: "April 12, 2024",
-      entry:
-        "I had a great day today! I went for a walk in the park and felt really refreshed...",
-    },
-    {
-      id: 3,
-      date: "April 10, 2024",
-      entry:
-        "I'm feeling a little overwhelmed with work lately. Need to find some ways to destress...",
-    },
-  ];
 
   const recommendedSongs = [
     { id: 1, name: "Ocean Waves", icon: <FaMusic /> },
@@ -112,18 +93,17 @@ const Dashboard = () => {
       <div className="my-8">
         <h2 className="text-2xl font-semibold mb-4">Last 3 Journal Entries</h2>
         <div className=" flex flex-col gap-4" id="entrybox">
-          {journalEntries.map((entry) => (
-            <JournalEntryCard
-              key={entry.id}
-              date={entry.date}
-              entry={entry.entry}
-            />
-          ))}
+          {
+            (entries.length===0)?<p className="p-4 bg-white text-[#2E8B57] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg text-center">
+            No entries found. Click the button below to add a new entry.
+          </p>:''
+          }
           {entries.map((entry) => (
             <JournalEntryCard
               key={entry.id}
               date={entry.date}
               entry={entry.entry}
+              entDelete={()=>dispatch(deleteEntry(entry.id))}
             />
           ))}
           <div className="flex flex-row">

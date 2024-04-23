@@ -2,10 +2,11 @@ import { createSlice,nanoid } from "@reduxjs/toolkit";
 
 const initialState={
     entries:[{
-        id:1,
-        date:"20-4-2024",
-        entry:"The day was kind of stressful but I am grateful to god."
-    }]
+        id: 1,
+        date: "April 10, 2024",
+        entry:
+          "I'm feeling a little overwhelmed with work lately. Need to find some ways to destress...",
+      }]
 }
 export const journalEntrySlice = createSlice({
     name: 'journalEntry',
