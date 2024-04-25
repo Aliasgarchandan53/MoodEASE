@@ -39,6 +39,7 @@ export default function Entryform({ closeForm }) {
             name='date'
             value={userEntry.date}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -50,6 +51,7 @@ export default function Entryform({ closeForm }) {
             name='entry'
             value={userEntry.entry}
             onChange={handleChange}
+            required
           />
           {/* <p className="mt-2 text-red-600 text-sm text-center">
             {formErrors.userFirstName}

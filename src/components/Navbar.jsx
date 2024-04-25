@@ -107,43 +107,31 @@ const Navbar = () => {
             menu ? "translate-x-0" : "-translate-x-full"
           } lg:hidden flex flex-col absolute bg-backgroundColor text-white left-0 top-16 font-semibold text-2xl text-center pt-8 pb-4 gap-8 w-full h-fit transition-transform duration-300`}
         >
-          <NavLink
+           <NavLink
             to="/"
             className=" hover:text-hoverColor transition-all cursor-pointer"
             >
             Home
             </NavLink>
-          <Link
+            <NavLink
             to="about"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
-            onClick={closeMenu}
-          >
+            >
             About Us
-          </Link>
-          <Link
+            </NavLink>
+            <NavLink
             to="services"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
-            onClick={closeMenu}
-          >
+            >
             Services
-          </Link>
-          <Link
+            </NavLink>
+            <NavLink
             to="doctors"
-            spy={true}
-            smooth={true}
-            duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
-            onClick={closeMenu}
-          >
+            >
             Doctors
-          </Link>
-          <NavLink
+            </NavLink>
+            <NavLink
             to="/blog"
             className=" hover:text-hoverColor transition-all cursor-pointer"
             >

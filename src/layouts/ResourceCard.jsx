@@ -1,22 +1,31 @@
 import React from "react";
-import { redirect } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
-const ResourceCard = ({ type, title, thumbnail, link = "" }) => {
+const ResourceCard = ({ type, title, thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPeuQb1jjYZy5a8pikIM2sWz9LxkHZIqrA6i2WMlDzJA&s", link, resDelete }) => {
   const redirectToResource = () => {
     window.open(link, "_blank");
   };
+
   return (
-    <div
-      className="p-4 bg-white text-[#2E8B57] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg hover:text-[#FF6347] cursor-pointer transition duration-300 ease-in-out"
-      onClick={redirectToResource}
-    >
+    <div className="p-4 bg-white text-[#2E8B57] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg relative">
       <img
         src={thumbnail}
         alt={title}
         className="w-full h-40 object-cover rounded-lg mb-2"
       />
-      <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="text-sm">{type === "video" ? "Video" : "Article"}</p>
+      <h3
+        className="text-lg font-semibold hover:text-[#FF6347] cursor-pointer transition duration-300 ease-in-out"
+        onClick={redirectToResource}
+      >
+        {title}
+      </h3>
+      <p className="text-sm mb-2">{type === "video" ? "Video" : "Article"}</p>
+      <button
+        className="text-[#FF6347] hover:text-red-600 transition duration-300 ease-in-out absolute bottom-2 right-2"
+        onClick={resDelete}
+      >
+        <FaTrashAlt />
+      </button>
     </div>
   );
 };

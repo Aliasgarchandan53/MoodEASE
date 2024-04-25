@@ -8,28 +8,38 @@ import {
 } from "../layouts/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import Entryform from "../models/Entryform";
+import Resourceform from "../models/Resourceform"
 import { useSelector, useDispatch } from 'react-redux'
+import { deleteResource } from "../features/resources/resourceSlice";
 import { deleteEntry } from "../features/journalEntry/journalEntrySlice";
 
 const Dashboard = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  const [showForm, setShowForm] = useState(false);
+  const [showEntryForm, setShowEntryForm] = useState(false);
+  const [showResourceForm,setShowResourceForm] =useState(false);
   const [entries, setEntries] = useState([]);
+  const [resources,setResources]=useState([])
   const dispatch=useDispatch()
 
-  const openForm = () => {
-    setShowForm(true);
+  const openEntryForm = () => {
+    setShowEntryForm(true);
   };
-
-  const closeForm = () => {
-    setShowForm(false);
+  const openResourceForm=()=>{
+    setShowResourceForm(true)
+  }
+  const closeEntryForm = () => {
+    setShowEntryForm(false);
   };
-
-  const jEntries = useSelector(state=>state.entries)
+  const closeResourceForm =()=>{
+    setShowResourceForm(false)
+  }
+  const jEntries = useSelector(state=>state.entries.entries)
+  const uResources=useSelector(state=>state.resources.resources)
 
   useEffect(() => {
     setEntries(jEntries);
-  }, [jEntries]);
+    setResources(uResources)
+  }, [jEntries,uResources]);
 
   const recommendedSongs = [
     { id: 1, name: "Ocean Waves", icon: <FaMusic /> },
@@ -37,41 +47,6 @@ const Dashboard = () => {
     { id: 3, name: "Forest Ambience", icon: <FaMusic /> },
     { id: 4, name: "Gentle Piano", icon: <FaHeadphonesAlt /> },
     { id: 5, name: "White Noise", icon: <FaMusic /> },
-  ];
-
-  const resources = [
-    {
-      id: 1,
-      type: "video",
-      title: "Mindfulness Meditation for Beginners",
-      thumbnail:
-        "https://plus.unsplash.com/premium_photo-1666299537516-bef50f6bf5ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWluZGZ1bGxuZXNzJTIwbWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D",
-      link: "https://www.youtube.com/watch?v=ZToicYcHIOU",
-    },
-    {
-      id: 2,
-      type: "article",
-      title: "Healthy Sleep Habits: Tips for Better Rest",
-      thumbnail:
-        "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVhbHRoeSUyMHNsZWVwJTIwaGFiaXRzfGVufDB8fDB8fHww",
-      link: "https://www.sleepfoundation.org/sleep-hygiene/healthy-sleep-tips",
-    },
-    {
-      id: 3,
-      type: "video",
-      title: "Yoga for Stress Relief",
-      thumbnail:
-        "https://media.istockphoto.com/id/1303002202/photo/my-presence-is-my-power.webp?b=1&s=170667a&w=0&k=20&c=xIjDs0LayICA4npXCHXF-aNVI1PWPDyhISCPxERgUyA=",
-      link: "https://www.healthline.com/health/fitness/yoga-for-stress",
-    },
-    {
-      id: 4,
-      type: "article",
-      title: "Nutrition Tips for Mental Health",
-      thumbnail:
-        "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bnV0cml0aW9ufGVufDB8fDB8fHww",
-      link: "https://www.health.harvard.edu/blog/nutritional-psychiatry-your-brain-on-food-201511168626",
-    },
   ];
 
   return (
@@ -112,11 +87,11 @@ const Dashboard = () => {
           </p>
           <button
               className="bg-brightColor text-white px-4 py-2 mx-4 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out "   
-            onClick={openForm}>
+            onClick={openEntryForm}>
               Add Entries
             </button>
           </div>
-          {showForm && <Entryform closeForm={closeForm} />}
+          {showEntryForm && <Entryform closeForm={closeEntryForm} />}
         </div>
       </div>
 
@@ -142,16 +117,37 @@ const Dashboard = () => {
           Resources
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {resources.map((resource) => (
-            <ResourceCard
-              key={resource.id}
-              type={resource.type}
-              title={resource.title}
-              thumbnail={resource.thumbnail}
-              link={resource.link}
-            />
-          ))}
+          {
+            resources.map((res)=>(
+              <ResourceCard
+              key={res.id}
+              type={res.type}
+              title={res.title}
+              thumbnail={res.thumbnail}
+              link={res.link}
+              resDelete={()=>dispatch(deleteResource(res.id))}
+              />
+            ))
+          }
         </div>
+        <div className="flex flex-col my-4">
+        {
+            (resources.length===0)?<p className="p-4 bg-white text-[#2E8B57] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg text-center">
+            No resources found. Click the button below to add a new resource.
+          </p>:''
+          }
+          <div className="flex flex-row my-4">
+          <p className="mt-2 text-center lg:text-start">
+            Click to add resources --{">"}
+          </p>
+          <button
+              className="bg-brightColor text-white px-4 py-2 mx-4 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out "   
+            onClick={openResourceForm}>
+              Add Resources
+            </button>
+          </div>
+          {showResourceForm && <Resourceform closeForm={closeResourceForm} />}
+          </div>
       </div>
     </div>
   );
