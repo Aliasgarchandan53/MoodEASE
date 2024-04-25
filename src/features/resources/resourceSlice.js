@@ -20,7 +20,7 @@ const initialState = {
     },
     {
       id: 3,
-      type: "video",
+      type: "article",
       title: "Yoga for Stress Relief",
       thumbnail:
         "https://media.istockphoto.com/id/1303002202/photo/my-presence-is-my-power.webp?b=1&s=170667a&w=0&k=20&c=xIjDs0LayICA4npXCHXF-aNVI1PWPDyhISCPxERgUyA=",
