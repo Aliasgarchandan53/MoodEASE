@@ -7,3 +7,5 @@ Through the Relaxation feature, users can unwind with soft sounds and relaxation
 Additionally, MoodEase includes a comprehensive Resources section featuring expert-curated articles, blogs, and videos covering various mental health topics, empowering users with valuable insights and support.
 
 MoodEase aims to create a supportive community environment where individuals can prioritize their mental well-being and find solace in shared experiences. Join us on the journey to better mental health with MoodEase.
+
+Project link : https://moodease.netlify.app/
