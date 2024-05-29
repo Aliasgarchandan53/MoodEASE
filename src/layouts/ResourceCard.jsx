@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
-const ResourceCard = ({ type, title, thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPeuQb1jjYZy5a8pikIM2sWz9LxkHZIqrA6i2WMlDzJA&s", link, resDelete }) => {
+const ResourceCard = ({ type, title, thumbnail = "", link, resDelete }) => {
   const redirectToResource = () => {
     window.open(link, "_blank");
   };

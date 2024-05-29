@@ -30,6 +30,7 @@ const initialState = {
         id: 4,
         type: "article",
         title: "Nutrition Tips for Mental Health",
+        thumbnail:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPeuQb1jjYZy5a8pikIM2sWz9LxkHZIqrA6i2WMlDzJA&s",
         link: "https://www.health.harvard.edu/blog/nutritional-psychiatry-your-brain-on-food-201511168626",
       }
   ],
@@ -39,11 +40,12 @@ export const resourceSlice = createSlice({
   initialState,
   reducers: {
     addResource: (state, action) => {
-      const { type, title, link } = action.payload;
+      const { type, title,thumbnail, link } = action.payload;
       const newResource = {
         id: nanoid(),
         type: type,
         title: title,
+        thumbnail:thumbnail,
         link: link,
       };
       state.resources.push(newResource);
