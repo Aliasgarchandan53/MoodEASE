@@ -19,7 +19,7 @@ const ResourceCard = ({ type, title, thumbnail = "", link, resDelete }) => {
       >
         {title}
       </h3>
-      <p className="text-sm mb-2">{type === "video" ? "Video" : "Article"}</p>
+      <p className="text-sm mb-2">{type === "Video" ? "Video" : "Article"}</p>
       <button
         className="text-[#FF6347] hover:text-red-600 transition duration-300 ease-in-out absolute bottom-2 right-2"
         onClick={resDelete}

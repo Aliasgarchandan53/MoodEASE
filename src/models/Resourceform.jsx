@@ -30,9 +30,8 @@ export default function Resourceform({ closeForm }) {
       })
       .then((data) => {
         let randomNum = Math.floor(Math.random() * 10);
-        resource.thumbnail =data.results[randomNum].urls.regular ;
-        console.log(randomNum);
-        console.log(data.results[randomNum].urls.regular);
+        resource.thumbnail = data.results[randomNum].urls.regular ;
+        console.log(resource)
         dispatch(addResource(resource));
         setResource(initialResource);
         closeForm();
