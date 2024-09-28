@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Homepage from "./pages/Homepage.jsx";
 import Blogpage from "./pages/Blogpage.jsx";
 import {
@@ -9,11 +9,12 @@ import {
 } from "react-router-dom";
 import Pagelayout from "./Pagelayout.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-import UserContextProvider from "./contexts/UserContextProvider.jsx";
 import About from "./components/About.jsx";
 import Services from "./components/Services.jsx";
 import Doctors from "./components/Doctors.jsx";
-
+import { useDispatch } from "react-redux";
+import authService  from "./appwrite/auth.js";
+import {login,logout} from "./features/authentication/authSlice.js"
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Pagelayout />}>
@@ -28,10 +29,29 @@ const router = createBrowserRouter(
 );
 
 function App() {
+
+  const [loading, setLoading] = useState(true);
+  const dispatch= useDispatch();
+
+  useEffect(() => {
+    authService.getCurrentUser()
+    .then((userData)=>{
+      if(userData)
+        dispatch(login({userData}))
+      else
+        dispatch(logout())
+    })
+    .catch((errror)=>{
+      console.log("Error setting user data : ",error);
+    })
+    .finally(()=>{
+      setLoading(false);
+    })
+  }, []);
+
+
   return (
-    <UserContextProvider>
       <RouterProvider router={router} />
-    </UserContextProvider>
   );
 }
 

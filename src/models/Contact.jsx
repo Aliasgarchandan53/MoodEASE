@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../contexts/UserContext";
+// import UserContext from "../contexts/UserContext";
 
 export default function Contact({ closeForm }) {
   const initialValues = {
@@ -13,7 +13,7 @@ export default function Contact({ closeForm }) {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  // const { setUser } = useContext(UserContext);
 
   //regular expressions :
   const emailReg = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
@@ -25,7 +25,7 @@ export default function Contact({ closeForm }) {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
       setFormValues(initialValues);
-      setUser({login:true,...formValues});
+      // setUser({login:true,...formValues});
       navigate("/dashboard");
       closeForm();
     }
@@ -107,7 +107,7 @@ export default function Contact({ closeForm }) {
               type="text"
               name="userEmail"
               id="userEmail"
-              placeholder="Your Email"
+              placeholder="abc@Qmail.com"
               className="py-3 px-2 bg-[#d5f2ec] rounded-lg"
               value={formValues.userEmail}
               onChange={handleChange}

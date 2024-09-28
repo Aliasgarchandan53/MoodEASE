@@ -4,15 +4,46 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Button from "../layouts/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Contact from "../models/Contact";
-import { useAuth0 } from "@auth0/auth0-react";
-
+import {useSelector} from "react-redux";
+import LogoutBtn from "../layouts/LogoutBtn";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  // const { user , setUser } = useContext(UserContext);
+  const [auth,setAuth]=useState(false);
+  // const authStatus = useSelector((state)=>state.auth.status);
   const navigate = useNavigate();
-  const location = useLocation();
-  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+  const navItems=[
+    {
+      name:'Home',
+      slug:'/',
+      active:true
+    },
+    {
+      name:'About us',
+      slug:'/about',
+      active:true
+    },
+    {
+      name:'Services',
+      slug:'/services',
+      active:true
+    },
+    {
+      name:'Doctors',
+      slug:'/doctors',
+      active:true
+    },
+    {
+      name:'Blogs',
+      slug:'/blog',
+      active:true//authStatus
+    },
+    {
+      name:'Dashboard',
+      slug:'/dashboard',
+      active:auth//authStatus
+    }
+  ]
 
   const handleChange = () => {
     setMenu(!menu);
@@ -42,52 +73,24 @@ const Navbar = () => {
           </div>
 
           <nav className=" hidden lg:flex flex-row items-center text-lg font-medium gap-8">
-          <NavLink
-            to="/"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Home
-            </NavLink>
-            <NavLink
-            to="about"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            About Us
-            </NavLink>
-            <NavLink
-            to="services"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Services
-            </NavLink>
-            <NavLink
-            to="doctors"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Doctors
-            </NavLink>
-            <NavLink
-            to="/blog"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Blogs
-            </NavLink>
             {
-              isAuthenticated?<NavLink
-              to="/dashboard"
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-              >
-              Dashboard
-              </NavLink>
-              :""
+              navItems.map((item)=>
+                item.active?
+                (
+                  <NavLink to={item.slug}>
+                    {item.name}
+                  </NavLink>
+                )
+                :null
+              )
             }
           </nav>
 
           <div className=" hidden lg:flex">
             {
-              !isAuthenticated?
-              <Button title="Login" onClick={() => loginWithRedirect()}/>
-              :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
+              !auth?
+              <Button title="Login" onClick={openForm}/>
+              :<LogoutBtn />
             }
             
           </div>
@@ -107,50 +110,23 @@ const Navbar = () => {
             menu ? "translate-x-0" : "-translate-x-full"
           } lg:hidden flex flex-col absolute bg-backgroundColor text-white left-0 top-16 font-semibold text-2xl text-center pt-8 pb-4 gap-8 w-full h-fit transition-transform duration-300`}
         >
-           <NavLink
-            to="/"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Home
-            </NavLink>
-            <NavLink
-            to="about"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            About Us
-            </NavLink>
-            <NavLink
-            to="services"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Services
-            </NavLink>
-            <NavLink
-            to="doctors"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Doctors
-            </NavLink>
-            <NavLink
-            to="/blog"
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-            Blogs
-            </NavLink>
+
             {
-              isAuthenticated?<NavLink
-              to="/dashboard"
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-              >
-              Dashboard
-              </NavLink>
-              :""
+              navItems.map((item)=>
+                item.active?
+                (
+                  <NavLink to={item.slug}>
+                    {item.name}
+                  </NavLink>
+                )
+                :null
+              )
             }
           <div className=" lg:hidden">
           {
-              !isAuthenticated?
-              <Button title="Login" onClick={() => loginWithRedirect()}/>
-              :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
+              !auth?
+              <Button title="Login" onClick={openForm}/>
+              :<Button title="Logout" onClick={()=>setAuth(false)}/>
             }
           </div>
         </div>
@@ -160,53 +136,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/*
-          <div className=" lg:hidden">
-          { {
-              !user.login?<button
-              className="bg-brightColor text-white px-6 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
-              onClick={openForm}
-            >
-            Login
-            </button>
-            :
-            <button
-              className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
-              onClick={logoutFunc}
-            >
-            Logout
-            </button>
-            } }
-            {
-              isAuthenticated?
-              <Button title="Login" onClick={() => loginWithRedirect()}/>
-              :<Button title="Logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
-            }
-          </div>
- */
-
-/*Form code :
-
-  const logoutFunc=()=>{
-    console.log(location.pathname);
-    let newuser={login:false,
-    userFirstName: "<error :Not yet login-ed>",
-    userLastName: "",
-    userEmail: "",
-    userPassword: ""};
-    setUser(newuser);   
-  }
-
-  useEffect(()=>{
-    if(!user.login && (location.pathname==="/dashboard")){
-      navigate("/");
-    }
-  },[user,location])
-  const redirectTo=()=>{
-    if(location.pathname!=="/")
-      navigate("/")
-  }
-
-
-*/
