@@ -19,7 +19,7 @@ export default function Footer() {
             <NavLink
               to="/"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -28,7 +28,7 @@ export default function Footer() {
             <Link
               to="services"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -37,7 +37,7 @@ export default function Footer() {
             <Link
               to="doctors"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -51,7 +51,7 @@ export default function Footer() {
             <Link
               to="about"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -60,7 +60,7 @@ export default function Footer() {
             <NavLink
               to="/blog"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -74,7 +74,7 @@ export default function Footer() {
             <Link
               to="services"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -83,7 +83,7 @@ export default function Footer() {
             <Link
               to="services"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -92,7 +92,7 @@ export default function Footer() {
             <Link
               to="services"
               spy={true}
-              smooth={true}
+              smooth="true"
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
@@ -103,13 +103,13 @@ export default function Footer() {
         <div className="w-full md:w-1/4">
           <h1 className="font-medium text-xl pb-4 pt-5 md:pt-0">Contact Us</h1>
           <nav className="flex flex-col gap-2">
-            <Link to="/" spy={true} smooth={true} duration={500}>
+            <Link to="/" spy={true} smooth="true" duration={500}>
               123 Elm Street, Suite 456 Springfield, IL 62701 United States
             </Link>
-            <Link to="/" spy={true} smooth={true} duration={500}>
+            <Link to="/" spy={true} smooth="true" duration={500}>
               support@care.com
             </Link>
-            <Link to="/" spy={true} smooth={true} duration={500}>
+            <Link to="/" spy={true} smooth="true" duration={500}>
               +123-456-7890
             </Link>
           </nav>

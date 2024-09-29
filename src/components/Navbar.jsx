@@ -3,14 +3,15 @@ import { Link} from "react-scroll";
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Button from "../layouts/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import Contact from "../models/Contact";
+import Login from "../models/Login";
+import Signup from "../models/Signup";
 import {useSelector} from "react-redux";
 import LogoutBtn from "../layouts/LogoutBtn";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [auth,setAuth]=useState(false);
-  // const authStatus = useSelector((state)=>state.auth.status);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSignupForm, setShowSignupForm] = useState(false);
+  const authStatus = useSelector((state)=>state.auth.status);
   const navigate = useNavigate();
   const navItems=[
     {
@@ -36,12 +37,12 @@ const Navbar = () => {
     {
       name:'Blogs',
       slug:'/blog',
-      active:true//authStatus
+      active:true
     },
     {
       name:'Dashboard',
       slug:'/dashboard',
-      active:auth//authStatus
+      active:authStatus
     }
   ]
 
@@ -53,13 +54,21 @@ const Navbar = () => {
     setMenu(false);
   };
 
-  const openForm = () => {
-    setShowForm(true);
+  const openLoginForm = () => {
+    setShowLoginForm(true);
+    setShowSignupForm(false); // Ensure signup form is closed
+    setMenu(false);
+  };
+
+  const openSignupForm = () => {
+    setShowSignupForm(true);
+    setShowLoginForm(false); // Ensure login form is closed
     setMenu(false);
   };
 
   const closeForm = () => {
-    setShowForm(false);
+    setShowLoginForm(false);
+    setShowSignupForm(false);
   };
   
   return (
@@ -88,14 +97,15 @@ const Navbar = () => {
 
           <div className=" hidden lg:flex">
             {
-              !auth?
-              <Button title="Login" onClick={openForm}/>
+              !authStatus?
+              <Button title="Login" onClick={openLoginForm}/>
               :<LogoutBtn />
             }
             
           </div>
 
-          {showForm && <Contact closeForm={closeForm} />}
+          {showLoginForm && <Login closeForm={closeForm} openSignupForm={openSignupForm} />}
+          {showSignupForm && <Signup closeForm={closeForm} openLoginForm={openLoginForm}/>} {/* Render Signup */}
 
           <div className=" lg:hidden flex items-center">
             {menu ? (
@@ -124,8 +134,8 @@ const Navbar = () => {
             }
           <div className=" lg:hidden">
           {
-              !auth?
-              <Button title="Login" onClick={openForm}/>
+              !authStatus?
+              <Button title="Login" onClick={openLoginForm}/>
               :<Button title="Logout" onClick={()=>setAuth(false)}/>
             }
           </div>

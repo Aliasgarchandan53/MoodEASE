@@ -6,7 +6,6 @@ import {
   JournalEntryCard,
   Button,
 } from "../layouts/index";
-import { useAuth0 } from "@auth0/auth0-react";
 import Entryform from "../models/Entryform";
 import Resourceform from "../models/Resourceform"
 import { useSelector, useDispatch } from 'react-redux'
@@ -14,7 +13,8 @@ import { deleteResource } from "../features/resources/resourceSlice";
 import { deleteEntry } from "../features/journalEntry/journalEntrySlice";
 
 const Dashboard = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const authStatus = useSelector((state)=>state.auth.status);
+  const user  = useSelector((state)=>state.auth.userData);
   const [showEntryForm, setShowEntryForm] = useState(false);
   const [showResourceForm,setShowResourceForm] =useState(false);
   const [entries, setEntries] = useState([]);
@@ -54,7 +54,7 @@ const Dashboard = () => {
       <div className="flex flex-col items-center lg:flex-row justify-between">
         <div>
           {
-            isAuthenticated?
+            authStatus?
             <h1 className="text-4xl font-semibold text-center lg:text-start">
             Hello {user.name} !!
           </h1>:''

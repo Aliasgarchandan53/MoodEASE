@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
 //pass closeform method
-export default function Login({ closeForm }) {
+export default function Login({ closeForm , openSignupForm}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
@@ -22,6 +22,7 @@ export default function Login({ closeForm }) {
         const userData = await authService.getCurrentUser();
         if (userData) dispatch(authLogin(userData));
         navigate("/dashboard");
+        closeForm();
       }
     } catch (error) {
       setError(error.message);
@@ -41,7 +42,7 @@ export default function Login({ closeForm }) {
           <p className="mt-2 text-center text-base text-black/60">
             Don&apos;t have any account?&nbsp;
             <Link
-              to="/signup" 
+              onClick={openSignupForm}
               className="font-medium text-primary transition-all duration-200 hover:underline"
             >
               Sign Up

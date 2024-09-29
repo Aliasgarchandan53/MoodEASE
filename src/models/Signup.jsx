@@ -7,25 +7,30 @@ import Input from "../layouts/Input";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
-export default function Signup() {
+export default function Signup({closeForm,openLoginForm}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
-  const [register, handleSubmit] = useForm();
+  const { register, handleSubmit } = useForm();
 
   const create = async (data) => {
+    console.log("signup initiated")
     setError("");
     try {
       const userData = await authService.createAccount(data);
       if (userData) {
         const data = await authService.getCurrentUser();
+        console.log("user data : ",data)
         if (data) {
           dispatch(login(data));
           navigate("/dashboard");
+          closeForm();
+          // console.log("login successful")
         }
       }
     } catch (error) {
-      setError(error.message);
+      console.log("signup error: ",error);
+      setError(error);
     }
   };
 
@@ -42,7 +47,7 @@ export default function Signup() {
           <p className="mt-2 text-center text-base text-black/60">
             Already have an account?&nbsp;
             <Link
-              to="/login"
+             onClick={openLoginForm}
               className="font-medium text-primary transition-all duration-200 hover:underline"
             >
               Sign In
