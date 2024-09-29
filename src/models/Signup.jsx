@@ -23,6 +23,7 @@ export default function Signup({closeForm,openLoginForm}) {
         console.log("user data : ",data)
         if (data) {
           dispatch(login(data));
+          window.location.reload();
           navigate("/dashboard");
           closeForm();
           // console.log("login successful")

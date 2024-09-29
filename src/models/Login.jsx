@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login as authLogin } from "../features/authentication/authSlice";
+import { login } from "../features/authentication/authSlice";
 import authService from "../appwrite/auth";
 import Button from "../layouts/Button";
 import Input from "../layouts/Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 
 //pass closeform method
@@ -14,13 +14,14 @@ export default function Login({ closeForm , openSignupForm}) {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
-  const login = async (data) => {
+  const loginHandler = async (data) => {
     setError("");
     try {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentUser();
-        if (userData) dispatch(authLogin(userData));
+        if (userData) dispatch(login(userData));
+        window.location.reload();
         navigate("/dashboard");
         closeForm();
       }
@@ -34,7 +35,7 @@ export default function Login({ closeForm , openSignupForm}) {
       <div className="popup-form absolute mt-12 text-black">
         <form
           className="w-80 md:w-96 space-y-5 bg-white p-5 rounded-xl"
-          onSubmit={handleSubmit(login)}
+          onSubmit={handleSubmit(loginHandler)}
         >
           <h2 className="text-4xl font-semibold text-center text-backgroundColor">
             Login

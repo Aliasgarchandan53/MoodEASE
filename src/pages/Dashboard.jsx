@@ -48,13 +48,12 @@ const Dashboard = () => {
     { id: 4, name: "Gentle Piano", icon: <FaHeadphonesAlt /> },
     { id: 5, name: "White Noise", icon: <FaMusic /> },
   ];
-
   return (
     <div className="min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-24 bg-[#F0F8FF] text-[#21603d]">
       <div className="flex flex-col items-center lg:flex-row justify-between">
         <div>
           {
-            authStatus?
+            user?
             <h1 className="text-4xl font-semibold text-center lg:text-start">
             Hello {user.name} !!
           </h1>:''
