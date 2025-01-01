@@ -7,7 +7,7 @@ export class DbService{
     databases;
 
     constructor(){
-        this.client()
+        this.client
         .setEndpoint(conf.appwriteUrl)
         .setProject(conf.appwriteProjectId);
         this.databases= new Databases(this.client);
@@ -26,9 +26,10 @@ export class DbService{
             )
         }catch(error){
             console.log("Appwrite entry creation error : ",error);
+
         }
     }
-    async deleteEntry({id}){
+    async deleteEntry(id){
         try{
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
@@ -43,13 +44,14 @@ export class DbService{
     }
     async getEntries(){
         try{
-            return await this.databases.listDocuments(
+            const response = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteEntryCollectionId
-            )
+            );
+            return response 
         }catch(error){
             console.log("Appwrite entry retreival error : ",error.message);
-            return null;
+            return [];
         }
     }
 }

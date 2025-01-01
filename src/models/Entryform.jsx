@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import {useDispatch} from 'react-redux'
 import { addEntry } from "../features/journalEntry/journalEntrySlice";
+import dbService from "../appwrite/database";
 export default function Entryform({ closeForm }) {
 
     const initialstate={date:'',title:'',entry:''}
