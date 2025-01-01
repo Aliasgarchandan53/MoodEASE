@@ -12,7 +12,7 @@ export class DbService{
         .setProject(conf.appwriteProjectId);
         this.databases= new Databases(this.client);
     }
-    async createEntry({date,title,entry}){
+    async createEntry({date,title,entry,userid}){
         try{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -21,7 +21,8 @@ export class DbService{
                 {
                     date,
                     title,
-                    entry
+                    entry,
+                    userid
                 }
             )
         }catch(error){
@@ -42,11 +43,12 @@ export class DbService{
             return false;
         }
     }
-    async getEntries(){
+    async getEntries(userid,queries=[Query.equal('userid',userid)]){
         try{
             const response = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
-                conf.appwriteEntryCollectionId
+                conf.appwriteEntryCollectionId,
+                queries
             );
             return response 
         }catch(error){

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import {useDispatch} from 'react-redux'
 import { addEntry } from "../features/journalEntry/journalEntrySlice";
 import dbService from "../appwrite/database";
-export default function Entryform({ closeForm }) {
+export default function Entryform({ closeForm , userId=""}) {
 
-    const initialstate={date:'',title:'',entry:''}
+    const initialstate={date:'',title:'',entry:'',userid:userId}
     const [userEntry,setUserEntry]=useState(initialstate)
     const [entry,setEntry]=useState('');
     const [date,setDate]=useState('');

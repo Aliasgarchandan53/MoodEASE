@@ -10,7 +10,7 @@ import Entryform from "../models/Entryform";
 import Resourceform from "../models/Resourceform"
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteResource } from "../features/resources/resourceSlice";
-import { deleteEntry } from "../features/journalEntry/journalEntrySlice";
+import { deleteEntry, initializeEntries } from "../features/journalEntry/journalEntrySlice";
 
 const Dashboard = () => {
   const authStatus = useSelector((state)=>state.auth.status);
@@ -37,9 +37,10 @@ const Dashboard = () => {
   const uResources=useSelector(state=>state.resources.resources)
 
   useEffect(() => {
-    setEntries(jEntries);
+    dispatch(initializeEntries(user.$id))
+    setEntries(jEntries)
     setResources(uResources)
-  }, [jEntries,uResources]);
+  }, [jEntries,uResources,dispatch]);
 
   const recommendedSongs = [
     { id: 1, name: "Ocean Waves", icon: <FaMusic /> },
@@ -91,7 +92,7 @@ const Dashboard = () => {
               Add Entries
             </button>
           </div>
-          {showEntryForm && <Entryform closeForm={closeEntryForm} />}
+          {showEntryForm && <Entryform closeForm={closeEntryForm} userId={user.$id}/>}
         </div>
       </div>
 

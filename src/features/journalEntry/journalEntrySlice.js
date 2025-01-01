@@ -14,15 +14,16 @@ export const journalEntrySlice = createSlice({
       state.entries = action.payload;
     },
     addEntry: (state, action) => {
-      const { date, title, entry } = action.payload;
+      const { date, title, entry , userid } = action.payload;
       const newEntry = {
         id: nanoid(),
         date,
         title,
         entry,
+        userid
       };
       state.entries.push(newEntry);
-      dbService.createEntry({ date, title, entry });
+      dbService.createEntry({ date, title, entry ,userid });
     },
     deleteEntry: (state, action) => {
       state.entries = state.entries.filter(entry => entry.id !== action.payload);
@@ -34,14 +35,15 @@ export const journalEntrySlice = createSlice({
 export const { setEntries, addEntry, deleteEntry } = journalEntrySlice.actions;
 
 // Thunk to initialize state asynchronously
-export const initializeEntries = () => async dispatch => {
+export const initializeEntries = (userId) => async dispatch => {
   try {
-    const response = await dbService.getEntries();
+    const response = await dbService.getEntries(userId);
     const savedEntries = response?.documents?.map(doc => ({
       id: doc.$id, // Use Appwrite's document ID as the entry ID
       date: doc.date || "No date provided", // Default date
       title: doc.title || "Untitled", // Default title
       entry: doc.entry || "No entry available", // Default entry
+      userid:userId ||"1234"
     })) || [];
     dispatch(setEntries(savedEntries));
   } catch (error) {
@@ -53,6 +55,7 @@ export const initializeEntries = () => async dispatch => {
         date: "2024-04-02",
         title: "My first entry",
         entry: "I'm feeling a little overwhelmed with work lately. Need to find some ways to destress...",
+        userid:"1234"
       },
     ]));
   }
