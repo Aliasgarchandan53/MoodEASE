@@ -76,6 +76,7 @@ const Dashboard = () => {
             <JournalEntryCard
               key={entry.id}
               date={entry.date}
+              title={entry.title}
               entry={entry.entry}
               entDelete={()=>dispatch(deleteEntry(entry.id))}
             />

@@ -3,10 +3,11 @@ import {useDispatch} from 'react-redux'
 import { addEntry } from "../features/journalEntry/journalEntrySlice";
 export default function Entryform({ closeForm }) {
 
-    const initialstate={date:'',entry:''}
+    const initialstate={date:'',title:'',entry:''}
     const [userEntry,setUserEntry]=useState(initialstate)
     const [entry,setEntry]=useState('');
     const [date,setDate]=useState('');
+    const [title, setTitle] = useState('');
     const dispatch=useDispatch()
 
     const handleChange = (event) => {
@@ -32,12 +33,24 @@ export default function Entryform({ closeForm }) {
         </h1>
         <div className="flex flex-col">
         <input
-            type="text"
+            type="date"
             placeholder="Date..."
             className="py-3 px-2 bg-[#d5f2ec] rounded-lg"
             id='date'
             name='date'
             value={userEntry.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col">
+        <input
+            type="text"
+            placeholder="Title..."
+            className="py-3 px-2 bg-[#d5f2ec] rounded-lg"
+            id='title'
+            name='title'
+            value={userEntry.title}
             onChange={handleChange}
             required
           />
@@ -57,7 +70,6 @@ export default function Entryform({ closeForm }) {
             {formErrors.userFirstName}
           </p> */}
         </div>
-
         <div className="flex flex-row  justify-center gap-2 ">
           <button
               type="submit"

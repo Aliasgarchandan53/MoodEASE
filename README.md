@@ -9,3 +9,5 @@ Additionally, MoodEase includes a comprehensive Resources section featuring expe
 MoodEase aims to create a supportive community environment where individuals can prioritize their mental well-being and find solace in shared experiences. Join us on the journey to better mental health with MoodEase.
 
 Project link : https://moodease.netlify.app/
+
+Add-ons : 1 Jan 2025
