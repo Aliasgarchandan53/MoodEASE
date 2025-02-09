@@ -24,7 +24,6 @@ export default function Resourceform({ closeForm ,userId="" }) {
   const addResourceHandler = (event) => {
     event.preventDefault();
     let url = `https://api.unsplash.com/search/photos?page=1&query=${resource.title}&client_id=${conf.unsplashApiKey}`;
-
     fetch(url)
       .then((res) => {
         return res.json();
