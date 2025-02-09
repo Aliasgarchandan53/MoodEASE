@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addResource } from "../features/resources/resourceSlice";
-
+import conf from "../conf/conf";
 export default function Resourceform({ closeForm ,userId="" }) {
   const initialResource = {
     type: "",
@@ -23,7 +23,7 @@ export default function Resourceform({ closeForm ,userId="" }) {
 
   const addResourceHandler = (event) => {
     event.preventDefault();
-    let url = `https://api.unsplash.com/search/photos?page=1&query=${resource.title}&client_id=DrB2dawFdHXs157jUXjXxmxV4iBXtQzQqe2CE9C2V2M`;
+    let url = `https://api.unsplash.com/search/photos?page=1&query=${resource.title}&client_id=${conf.unsplashApiKey}`;
 
     fetch(url)
       .then((res) => {
