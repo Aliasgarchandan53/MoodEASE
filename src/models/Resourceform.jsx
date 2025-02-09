@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addResource } from "../features/resources/resourceSlice";
 
-export default function Resourceform({ closeForm }) {
+export default function Resourceform({ closeForm ,userId="" }) {
   const initialResource = {
     type: "",
     title: "",
     thumbnail:"",
     link: "",
+    userid:userId
   };
   const [resource, setResource] = useState(initialResource);
   const [type, setType] = useState("");

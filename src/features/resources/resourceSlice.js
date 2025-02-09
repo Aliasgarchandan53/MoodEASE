@@ -9,7 +9,7 @@ export const resourceSlice = createSlice({
   initialState,
   reducers: {
     setResources:(state,action)=>{
-      state.resources=action.payload;
+      state.resources = action.payload;
     },
     addResource: (state, action) => {
       const { type, title,thumbnail, link,userid } = action.payload;
@@ -44,10 +44,10 @@ export const initializeResources = (userId) => async dispatch =>{
         link: doc.link,
         userid : userId ||"123456"
     })) || [];
-    dispatch(setResources(savedResources));
+    dispatch(setResources(savedResources))
   } catch (error) {
     console.error("Error fetching resources from Appwrite:", error);
-    dispatch(setEntries([
+    dispatch(setResources([
       {
         id: 1,
         type: "video",
@@ -61,6 +61,6 @@ export const initializeResources = (userId) => async dispatch =>{
   }
 }
 
-export const { addResource, deleteResource } = resourceSlice.actions;
+export const { setResources, addResource, deleteResource } = resourceSlice.actions;
 
 export default resourceSlice.reducer;

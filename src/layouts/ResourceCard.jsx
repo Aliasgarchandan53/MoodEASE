@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
-const ResourceCard = ({ type, title, thumbnail = "", link, resDelete }) => {
+const ResourceCard = ({ id, type, title, thumbnail = "", link, resDelete }) => {
   const redirectToResource = () => {
     window.open(link, "_blank");
   };

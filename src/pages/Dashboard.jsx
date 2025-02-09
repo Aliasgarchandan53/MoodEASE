@@ -9,7 +9,7 @@ import {
 import Entryform from "../models/Entryform";
 import Resourceform from "../models/Resourceform"
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteResource } from "../features/resources/resourceSlice";
+import { deleteResource ,initializeResources } from "../features/resources/resourceSlice";
 import { deleteEntry, initializeEntries } from "../features/journalEntry/journalEntrySlice";
 
 const Dashboard = () => {
@@ -38,6 +38,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(initializeEntries(user.$id))
+    dispatch(initializeResources(user.$id))
     setEntries(jEntries)
     setResources(uResources)
   }, [jEntries,uResources,dispatch]);
@@ -147,7 +148,7 @@ const Dashboard = () => {
               Add Resources
             </button>
           </div>
-          {showResourceForm && <Resourceform closeForm={closeResourceForm} />}
+          {showResourceForm && <Resourceform closeForm={closeResourceForm} userId={user.$id}/>}
           </div>
       </div>
     </div>
