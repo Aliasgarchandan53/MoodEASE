@@ -136,7 +136,7 @@ const Navbar = () => {
           {
               !authStatus?
               <Button title="Login" onClick={openLoginForm}/>
-              :<Button title="Logout" onClick={()=>setAuth(false)}/>
+              :<LogoutBtn />
             }
           </div>
         </div>
