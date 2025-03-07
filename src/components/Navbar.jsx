@@ -7,6 +7,7 @@ import Login from "../models/Login";
 import Signup from "../models/Signup";
 import {useSelector} from "react-redux";
 import LogoutBtn from "../layouts/LogoutBtn";
+
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);

@@ -11,9 +11,6 @@ export default function Resourceform({ closeForm ,userId="" }) {
     userid:userId
   };
   const [resource, setResource] = useState(initialResource);
-  const [type, setType] = useState("");
-  const [title, setTitle] = useState("");
-  const [link, setLink] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -35,7 +32,15 @@ export default function Resourceform({ closeForm ,userId="" }) {
         dispatch(addResource(resource));
         setResource(initialResource);
         closeForm();
-      });
+      })
+      .catch((error)=>{
+        console.log(`Error fetching image from unsplash : ${error.message}`)
+        resource.thumbnail="https://plus.unsplash.com/premium_photo-1666299537516-bef50f6bf5ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWluZGZ1bGxuZXNzJTIwbWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D"
+        dispatch(addResource(resource));
+        setResource(initialResource);
+        closeForm();
+      })
+      ;
   };
 
   return (

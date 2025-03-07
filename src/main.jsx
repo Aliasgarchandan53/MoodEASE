@@ -16,9 +16,8 @@ import Dashboard from "./pages/Dashboard.jsx";
 import About from "./components/About.jsx";
 import Services from "./components/Services.jsx";
 import Doctors from "./components/Doctors.jsx";
-import AuthLayout from './layouts/AuthLayout.jsx'
-import Login from "../src/models/Login.jsx"
-import Signup from "../src/models/Signup.jsx"
+import AuthLayout from './layouts/AuthLayout.jsx';
+
 const router = createBrowserRouter([{
   path:'/',
   element:<App/>,
