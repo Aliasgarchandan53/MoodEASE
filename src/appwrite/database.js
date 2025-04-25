@@ -43,7 +43,7 @@ export class DbService{
             return false;
         }
     }
-    async getEntries(userid,queries=[Query.equal('userid',userid)]){
+    async getEntries(userid,queries=[Query.equal('userid',userid),Query.orderDesc("date")]){
         try{
             const response = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
@@ -56,6 +56,8 @@ export class DbService{
             return [];
         }
     }
+
+    
 }
 
 const dbService =  new DbService();

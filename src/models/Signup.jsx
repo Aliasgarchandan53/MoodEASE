@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 export default function Signup({closeForm,openLoginForm}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const { register, handleSubmit } = useForm();
 
   const create = async (data) => {
@@ -18,6 +18,7 @@ export default function Signup({closeForm,openLoginForm}) {
     setError("");
     try {
       const userData = await authService.createAccount(data);
+      console.log(`User data : ${userData}`)
       if (userData) {
         const data = await authService.getCurrentUser();
         console.log("user data : ",data)
